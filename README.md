@@ -2,7 +2,7 @@
 
 Pug is a template language to conveniently write your HTML and add dynamic behavior to it.
 For example the code `h1 Welcome to my page!` will be transformed into `<h1>Welcome to my page!</h1>` with Pug.
-Check out the [documentation](https://github.com/pugjs/pug){:target="\_blank"} for more information.
+Check out the [documentation](https://github.com/pugjs/pug) for more information.
 
 ### Installation
 
@@ -15,7 +15,3 @@ Check out the [documentation](https://github.com/pugjs/pug){:target="\_blank"} f
 
 Start to watch your .pug files and compile it into an index.html:  
 `pug -w ./ -o ./html -P`
-
-### Mixins
-
-Use an 'includes' folder for your mixins.
