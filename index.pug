@@ -1,0 +1,96 @@
+// Reusable code with Mixins
+mixin comment(commentData)
+  if commentData.admin
+    em(style="display: block; margin-bottom: 10px; font-size: 14px") Posted by Admin
+
+  .comment
+    .date= commentData.date
+    .author= commentData.author
+    .text= commentData.text
+
+// HTML declaration
+doctype html
+html
+  head
+    title pugjs-101
+    meta(charset="UTF-8")
+    link(rel="stylesheet" href="style.css")
+
+  body
+    // Including reusable components
+    include includes/container
+      include includes/nav
+
+      // ID and Class usage
+      h3#title Train your skills everyday and become a real Coding Panda!
+
+      p.class Shanty town cardboard warehouse rebar sign shoes denim savant franchise-ware wonton soup. Tower carbon vehicle advert wonton soup j-pop Chiba systema. Assassin receding engine sentient physical crypto-nano-paranoid tiger-team dolphin ablative. Gang industrial grade digital tower kanji silent otaku into physical marketing. Some stuff to show the pug functionality.
+
+      // Only a class creates an empty <div> with the class
+      .display-box
+
+      // Input with some attributes
+      label
+        strong Please enter your password:
+      input(style="height: 18px; width: 200px; margin-bottom: 20px; border-radius: 6px;" type="password" name="input-password" data-js=`${ 5> 2 ? "OK" : "NOT OK!"}`)
+      hr(style="margin-bottom: 20px")
+
+      - const myClasses = ["class1", "class2", "class3"]
+      div(class=myClasses)
+
+      // Inline style with a variable
+      - const myStyles = { "color": "white", "background-color": "#98B9F2", "margin-bottom": "10px" }
+      div(style=myStyles) Some great stuff!
+      div(style=myStyles) Some great stuff!
+      div(style=myStyles) Some great stuff!
+
+      // Attributes variable with reserves keyword
+      - const imageStyle = { "display": "block", "margin": "20px auto", "border-radius": "6px", "padding": "16px", "border": "1px solid grey" }
+      - const myAttributes = { "src": "https://source.unsplash.com/256x256/?random", "alt": "This is a random picture."}
+      img(style=imageStyle)&attributes(myAttributes)
+
+      hr(style="margin-bottom: 20px")
+      h3 Let's loop over some nice stuff!
+
+      // Iterate over Arrays
+      - const fruits = ["HTML", "CSS", "SQL", "REACT", "GIT"]
+      ul
+        each n, i in fruits
+          li= i + " - " + n
+
+      // Iterate over Objects
+      - const skills = { "Ruby": 90, "JavaScript": 75 }
+      ol
+        each value, key in skills
+          li(style="font-weight: bold")= key + " - " + value + "/100"
+
+      hr(style="margin-bottom: 20px")
+
+      // Conditionals
+      - let user = { name: "Max", loggedIn: false, lastLogin: 6 }
+      if user.loggedIn
+        p
+          | Welcome back, 
+          strong #{ user.name }
+      else if user.lastLogin < 10
+        p(style="text-align: right; margin-bottom: 5px;")
+          small Your last login was #{ user.lastLogin } minutes ago
+        a(style="display:block; text-align: right" href="/Login") Login Again
+      else
+        a(style="display:block; text-align: right" href="/Login") Login
+
+      // Case Statement
+      - const friends = 10
+      case friends
+        when 0
+          p You have no friends
+        when 1
+          p You have a friend
+        default
+          p You have #{friends} friends
+
+      // Using Mixins
+      - const comment1 = { date: '2021-12-23', author: 'max.p', text: 'Some great stuff!', admin: true }
+      - const comment2 = { date: '2021-12-24', author: 'codemaster101', text: 'Awesome tutorial!', admin: false }
+      +comment(comment1)
+      +comment(comment2)

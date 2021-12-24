@@ -1,0 +1,10 @@
+{
+  "name": "pugjs-101",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "UNLICENSED",
+
+  "dependencies": {
+    "pug": "^3.0.2"
+  }
+}
